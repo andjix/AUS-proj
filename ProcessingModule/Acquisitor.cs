@@ -52,11 +52,35 @@ namespace ProcessingModule
 		}
 
         /// <summary>
-        /// Acquisitor thread logic.
+        /// Logika akvizicione niti.
+        /// Čeka signal od tajmera koji se aktivira svake sekunde, a zatim proverava
+        /// svaku konfigurisanu tačku. Kada proteklo vreme za neku tačku dostigne njen
+        /// interval očitavanja (3 s za digitalne, 4 s za analogne), u red se dodaje
+        /// komanda za čitanje i brojač se resetuje.
         /// </summary>
-		private void Acquisition_DoWork()
+        private void Acquisition_DoWork()
 		{
             //TO DO: IMPLEMENT
+            while(true)
+            {
+                acquisitionTrigger.WaitOne();
+
+                foreach (IConfigItem configItem in configuration.GetConfigurationItems())
+                {
+                    configItem.SecondsPassedSinceLastPoll++;
+                    if (configItem.SecondsPassedSinceLastPoll >= configItem.AcquisitionInterval)
+                    {
+                        configItem.SecondsPassedSinceLastPoll = 0;
+
+                        processingManager.ExecuteReadCommand(
+                            configItem,
+                            configuration.GetTransactionId(),
+                            configuration.UnitAddress,
+                            configItem.StartAddress,
+                            configItem.NumberOfRegisters);
+                    }
+                }
+            }
         }
 
         #endregion Private Methods

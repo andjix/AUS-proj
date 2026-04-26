@@ -1,9 +1,8 @@
 STA 41
 TCP 43677
 
-DO_REG  1  2300  0  0  1     0  DO  @STOP
-DO_REG  1  2302  0  0  1     0  DO  @Ventil_V1
-DO_REG  1  2305  0  0  1     0  DO  @P1
-DO_REG  1  2306  0  0  1     0  DO  @P2
+DO_REG  1  2300  0  0  1  0  DO  @STOP
+DO_REG  1  2302  0  0  1  0  DO  @Ventil_V
+DO_REG  2  2305  0  0  1  0  DO  @P
 IN_REG  1  200   0  0  4095  0  AI  @L
 HR_INT  1  2500  0  0  4095  0  AO  @N1

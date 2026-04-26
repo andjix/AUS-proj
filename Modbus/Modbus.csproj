@@ -50,7 +50,6 @@
     <Compile Include="FunctionParameters\ModbusWriteCommandParameters.cs" />
     <Compile Include="ModbusFunctions\ModbusFunction.cs" />
     <Compile Include="ModbusFunctions\ReadCoilsFunction.cs" />
-    <Compile Include="ModbusFunctions\ReadDiscreteInputsFunction.cs" />
     <Compile Include="ModbusFunctions\ReadHoldingRegistersFunction.cs" />
     <Compile Include="ModbusFunctions\ReadInputRegistersFunction.cs" />
     <Compile Include="ModbusFunctions\WriteSingleCoilFunction.cs" />

@@ -67,7 +67,10 @@ namespace ProcessingModule
 
                 foreach (IConfigItem configItem in configuration.GetConfigurationItems())
                 {
+                    // Svaka tacka broji sopstvene sekunde
                     configItem.SecondsPassedSinceLastPoll++;
+
+                    // Kada dostigne interval, dodaje se komanda za citanje i brojac se resetuje
                     if (configItem.SecondsPassedSinceLastPoll >= configItem.AcquisitionInterval)
                     {
                         configItem.SecondsPassedSinceLastPoll = 0;

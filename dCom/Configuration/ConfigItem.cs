@@ -270,7 +270,7 @@ namespace dCom.Configuration
 		{
 			RegistryType = GetRegistryType(configurationParameters[0]);
 			int temp;
-			double doubleTemp;
+			//double doubleTemp;
 			Int32.TryParse(configurationParameters[1], out temp);
 			NumberOfRegisters = (ushort)temp;
 			Int32.TryParse(configurationParameters[2], out temp);
